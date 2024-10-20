@@ -10,14 +10,16 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-.flex-center {
-  @applay flex justify-center items-center;
+
+  .flex-center {
+    @applay flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
 }
 
-.flex-between {
-  @apply flex justify-between items-center;
-}
-}
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -82,5 +84,10 @@ body {
 
   body {
     @apply bg-background text-foreground;
+
+    /* clerk */
+    .cl-providerIcon__github {
+      filter: invert(1)
+    }
   }
 }
