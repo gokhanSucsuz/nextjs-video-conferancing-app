@@ -18,6 +18,8 @@ body {
   .flex-between {
     @apply flex justify-between items-center;
   }
+
+  .border-border {}
 }
 
 @layer base {
