@@ -17,14 +17,7 @@ const HomeCard = ({
 	color,
 	handleClick
 }: HomeCardProps) => {
-	return (
-		<div
-			className={cn(
-				"px-4 py-5 flex flex-col w-full xl:max-w-[270px] rounded-[14px] cursor-pointer min-h-[260px] justify-between",
-				color
-			)}
-			onClick={handleClick}
-		>
+	return <div className={cn("px-4 py-5 flex flex-col w-full sm:max-w-[270px] rounded-[14px] cursor-pointer min-h-[260px] justify-between", color)} onClick={handleClick}>
 			<div className="flex glassmorphism size-12 rounded-[10px] bg-transparent-1 justify-center items-center">
 				<Image src={img} alt={title} width={27} height={27} />
 			</div>
@@ -36,8 +29,7 @@ const HomeCard = ({
 					{description}
 				</p>
 			</div>
-		</div>
-	);
+		</div>;
 };
 
 export default HomeCard;
