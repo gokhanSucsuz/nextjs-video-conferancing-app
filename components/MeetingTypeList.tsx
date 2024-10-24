@@ -21,22 +21,22 @@ const MeetingTypeList = () => {
 		link: ""
 	});
 	const [callDetails, setCallDetails] = useState<Call>();
+	console.log(callDetails);
 	const createMeeting = async () => {
 		if (!client || !user) return;
 
 		try {
 			if (!values.dateTime) {
-				toast({
-					title: "Please select a date and time"
-				});
+				toast({ title: "Please select a date and time" });
 				return;
+			} else {
+				setValues({ ...values, dateTime: new Date(values.dateTime) });
 			}
 			const id = crypto.randomUUID();
 			const call = client.call("default", id);
 			if (!call) throw new Error("Failed to create meeting");
 
-			const startsAt =
-				values.dateTime.toISOString() || new Date(Date.now()).toISOString();
+			const startsAt = values.dateTime.toISOString() || new Date(Date.now()).toISOString();
 			const description = values.description || "Instant meeting";
 			await call.getOrCreate({
 				data: {
@@ -50,15 +50,11 @@ const MeetingTypeList = () => {
 			if (!values.description) {
 				router.push(`/meeting/${call.id}`);
 			}
-			toast({
-				title: "Meeting created successfully"
-			});
+			toast({ title: "Meeting created successfully" });
 		} catch (error) {
 			console.log(error);
 
-			toast({
-				title: "Failed to create meeting"
-			});
+			toast({ title: "Failed to create meeting" });
 		}
 	};
 	return (

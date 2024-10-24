@@ -3,10 +3,8 @@ import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
-	DialogFooter,
 	DialogHeader,
-	DialogTitle,
-	DialogTrigger
+	DialogTitle
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
 import Image from "next/image";
@@ -38,7 +36,7 @@ const MeetingModal = ({
 			<DialogHeader>
 				<DialogTitle>Edit profile</DialogTitle>
 				<DialogDescription>
-					Make changes to your profile here. Click save when you're done.
+					Make changes to your profile here. Click save when you are done.
 				</DialogDescription>
 			</DialogHeader>
 			<DialogContent className="flex w-full max-w-[520px] flex-col gap-6 border-none bg-dark-1 px-6 py-9 text-white">

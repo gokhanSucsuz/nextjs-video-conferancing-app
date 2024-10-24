@@ -3,7 +3,6 @@ import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
@@ -11,7 +10,6 @@ import { LayoutList, Users } from "lucide-react";
 import {
 	CallControls,
 	CallingState,
-	CallParticipantListing,
 	CallParticipantsList,
 	CallStatsButton,
 	PaginatedGridLayout,
