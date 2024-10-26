@@ -5,14 +5,27 @@ import MeetingSetup from "@/components/MeetingSetup";
 import { useGetCallById } from "@/hooks/useGetCallById";
 import { useUser } from "@clerk/nextjs";
 import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Meeting = ({ params: { id } }: { params: { id: string } }) => {
+const Meeting = ({ params }: { params: Promise<{ id: string }> }) => {
 	const { isLoaded } = useUser();
 	const [isSetupComplete, setIsSetupComplete] = useState(false);
-	const { call, isCallLoading } = useGetCallById(id);
+	const [id, setId] = useState<string | null>(null);
 
-	if (!isLoaded || isCallLoading) return <Loader />;
+	useEffect(
+		() => {
+			const fetchParams = async () => {
+				const resolvedParams = await params; // params'ı çözümle
+				setId(resolvedParams.id); // id'yi state'e ata
+			};
+			fetchParams();
+		},
+		[params]
+	);
+
+	const { call, isCallLoading } = useGetCallById(id!); // id'yi zorla açıyoruz
+
+	if (!isLoaded || isCallLoading || !id) return <Loader />;
 	return (
 		<main className="h-screen w-full">
 			<StreamCall call={call}>
