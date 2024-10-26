@@ -55,14 +55,14 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
 
       setRecordings(recordings);
       } catch (error) {
-        toast({title:"Try again later"});
+        toast({title:`${error} Try again later!`});
       }
     };
 
     if (type === 'recordings') {
       fetchRecordings();
     }
-  }, [type, callRecordings]);
+  }, [type,toast, callRecordings]);
 
   if (isLoading) return <Loader />;
 
